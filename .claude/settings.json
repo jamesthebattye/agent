@@ -9,7 +9,6 @@
       "Bash(pdftotext:*)",
       "WebSearch",
       "WebFetch",
-      "mcp__apollo__apollo_mixed_companies_search",
       "mcp__apollo__apollo_mixed_people_api_search",
       "mcp__apollo__apollo_organizations_lookup",
       "mcp__apollo__apollo_organizations_job_postings",
@@ -19,9 +18,11 @@
       "mcp__apollo__apollo_emailer_campaigns_search",
       "mcp__apollo__apollo_email_accounts_index",
       "mcp__apollo__apollo_usage_stats_credit_usage_stats",
-      "mcp__apollo__apollo_users_api_profile"
+      "mcp__apollo__apollo_users_api_profile",
+      "mcp__apollo__apollo_webhook_result_show"
     ],
     "ask": [
+      "mcp__apollo__apollo_mixed_companies_search",
       "mcp__apollo__apollo_people_match",
       "mcp__apollo__apollo_people_bulk_match",
       "mcp__apollo__apollo_organizations_enrich",

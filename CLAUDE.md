@@ -53,12 +53,25 @@ If a fact isn't in `knowledge/` or a cited source, **say so**, or write `[PLACEH
 4. People data stays in `output/` (git-ignored). Don't paste contact lists into anything outside this folder.
 
 ## Apollo credit discipline
-- **Search before enrich.** Company search and people search (`apollo_mixed_companies_search`, `apollo_mixed_people_api_search`) are used to build shortlists. They don't reveal emails.
-- **Only enrich** (`apollo_people_match` / `apollo_people_bulk_match`, which reveal emails) for contacts **James has approved** from a shortlist.
-- **Before any credit-using step**, tell James roughly how many credits it will use (about 1 credit per person enriched for email; more if phone numbers or waterfall add-ons are requested, which we don't do by default). If an Apollo response includes an `mcp_credits` block, show the estimate before spending and the credits used plus the new balance afterwards. Check the balance with `apollo_usage_stats_credit_usage_stats` when useful.
-- Never request phone numbers unless James asks.
-- If an Apollo response contains an `apollo_plan_limit` block, relay its message verbatim and stop.
-- Before pulling contacts, check `apollo_contacts_search` for people already in James's Apollo CRM, so you don't pay twice.
+Know what each tool costs:
+| Tool | Cost | Use for |
+|---|---|---|
+| `apollo_organizations_lookup` | **free** | find companies by name/domain, or with filters (location, headcount, keywords). Returns only id, name, domain, website |
+| `apollo_mixed_people_api_search` | free (no emails returned) | finding BD/marketing people at a company |
+| `apollo_contacts_search` | free | people already in James's Apollo CRM |
+| `apollo_mixed_companies_search` | **1 credit per request** (up to 100 companies with full details: headcount, industry, keywords, locations) | building a scored shortlist. One request per segment is good value |
+| `apollo_organizations_enrich` / `_bulk_enrich` | credits per company | only if James asks |
+| `apollo_people_bulk_match` (≤10 people) / `apollo_agent_bulk_enrich` (>10 people) | credits per person matched (emails) | **only** contacts James approved |
+
+Rules:
+- **Search before enrich.** Never reveal emails for anyone James hasn't approved from a shortlist.
+- **Before `apollo_mixed_companies_search`**, say exactly: "This will consume 1 credit. Do you want to proceed?". For a batch, give the total upfront (e.g. "4 searches, 1 credit each, 4 credits total"), then run the batch without asking again.
+- **Before any email reveal**, call `apollo_users_api_profile` with `include_waterfall_capability=true` once per conversation. If waterfall email is enabled, it's Apollo's default path and costs a **variable** number of credits per person (say so; don't quote a fixed number). If it's not enabled, a standard match is about 1 credit per person matched. Give James the estimate and get a "yes".
+- For more than 10 people, use `apollo_agent_bulk_enrich` (it quotes its own total). For 10 or fewer, use `apollo_people_bulk_match`.
+- **Never request phone numbers** or personal emails unless James asks.
+- If an Apollo response includes an `mcp_credits` block, show the estimate before spending, and the credits used plus the new balance after.
+- If an Apollo response contains an `apollo_plan_limit` block, relay its message word for word as the whole reply and stop.
+- Subagents can't ask James for permission, so they use **free tools only**.
 
 ## Email rules (used by `draft-email` and the `email-critic`)
 - **UK English.** First touch **60–120 words**. Follow-ups **under 80 words**. The sign-off line isn't counted.

@@ -16,7 +16,7 @@ Arguments: `$ARGUMENTS` is an optional filter (year, event, tier, or "top N"). F
 
 ## 2. Check each company in Apollo (search only, no enrichment)
 For each company (in parallel where possible):
-- **Company:** `apollo_mixed_companies_search` with `q_organization_domains_list` (or `apollo_organizations_lookup` / name) to confirm the domain, headcount, locations and office countries. Note any acquisition or rename.
+- **Company:** run `apollo_organizations_lookup` (free) with the domain or name to confirm the Apollo org and domain. For headcount, locations and office countries, batch the domains into **one** `apollo_mixed_companies_search` per 100 companies (1 credit each). Ask first: "This will consume N credits. Do you want to proceed?". Note any acquisition or rename.
 - **Past contact still there?** Search `apollo_mixed_people_api_search` for the past contact's name at that domain, and check `apollo_contacts_search`.
   - Found with a current title at the company → `Yes`.
   - Found at another company, or not found at this domain → `Left`. If they moved to another ICP company, note "now at X". That's a warm lead too, and goes in the notes.
@@ -34,7 +34,7 @@ Give a one-line reason. Suggested tier: start from their last tier (an "upgrade 
 ⛔ **Gate 1: re-engagement shortlist.** Show a table: company, history (events/years/tier/outcome), past contact status, proposed 2027 event + reason, number of BD/Marketing contacts found, suggested tier. Show the people who'd need enriching and the **credit estimate** (≈1 credit per new email reveal; people already in James's Apollo CRM with an email are free). Ask for approval.
 
 ## 4. Enrich approved contacts
-`apollo_people_bulk_match` in batches of ≤10, emails only, with no phones. Report credits used and the balance.
+Follow `find-leads` step 5: check waterfall capability once; `apollo_people_bulk_match` for ≤10 people, or `apollo_agent_bulk_enrich` for more; emails only, no phones. Report credits used and the balance.
 
 ## 5. Output
 - Rows go to `output/YYYY-MM-DD/reengage-2027.json`, using the `LEAD_COLUMNS` and `HISTORY_COLUMNS` keys (`past_events`, `past_years`, `past_tier`, `past_contact`, `past_contact_status`, `past_outcome`, `history_notes`) from `scripts/xlsx_tools.py`.
