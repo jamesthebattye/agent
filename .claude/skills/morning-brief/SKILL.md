@@ -67,7 +67,8 @@ Also add up to 3 **"warm-up" plays from office moves**: companies that just move
 - Update `state/seen-companies.json` (add every company shown today, with its status) and `state/brief-state.json` (`next_index` +1, wrapping round; `last_run` = today). Commit **only the `state/` files** (they hold company names, not people data) with the message `morning-brief: <today> <city>`, then push to `origin main`. `output/` stays git-ignored.
 
 ## 7. Deliver
-- **Private page:** publish `output/<today>/morning-brief.md`, turned into a simple, readable HTML page, to the artifact URL in `state/brief-state.json` `brief_artifact_url`. If it's empty, create one, store the URL and commit. Keep it private. Attach the .xlsx/.docx as page files if the tool allows. If publishing isn't possible in this session, say so in the summary.
+- **Private page:** `python3 scripts/brief_to_html.py output/<today>/morning-brief.md`. Then publish `output/<today>/morning-brief.html` with the Artifact tool, passing `url` = `brief_artifact_url` from `state/brief-state.json` so the **same** private page updates every day. If the URL is empty, create the page, store the URL and commit. Downloads don't work inside the page, so don't add download links.
+- **Files:** send `leads-morning-<today>.xlsx` and `morning-brief.docx` with SendUserFile (status `proactive`, display `attach`). Scheduled runs use a fresh container, so the files only survive as these attachments and in the session.
 - **Summary (the final message, shown in the push notification):** three lines.
   1. City; number of new companies; number of A-priority contacts.
   2. The top lead and its trigger.
