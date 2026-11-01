@@ -32,6 +32,8 @@ Follow CLAUDE.md (ICP, fit rubric, guardrails, credit discipline). Create a task
     - A&D: `workplace design`, `interior architecture`, `fit-out`
     - CRE advisory: `commercial real estate advisory`, `occupier services`, `workplace strategy`
     - FM: `integrated facilities management`, `facility services`, `workplace services`
+- **Expect saved accounts to dominate.** In the first test run, all 100 results were James's team's existing Apollo `accounts`, and there were 0 net-new `organizations`. For each one, report the **owner** (map `owner_id` with `apollo_users_search`), the **sequence history** (`contact_campaign_status_tally`) and the **lists** (`label_ids` → `apollo_labels_index`). By default, leave out accounts owned by an active colleague, accounts with live sequence activity (`not_sent`/`paused`/activity in the last 30 days), and accounts on another event's sponsor-prospect list (e.g. "SPEX"). List them separately so James can add them back.
+- Apollo responses are big (60–500k characters) and get saved to a file. Parse them with `python3`; never read them raw.
 - Results come in two buckets. For `organizations`, `id` is the org ID. For `accounts` (already saved by James's team), use `organization_id`, and note "already in Apollo accounts".
 - Pull about 2× the requested count, dedupe by domain, and remove the exclusion list.
 
@@ -45,6 +47,7 @@ Follow CLAUDE.md (ICP, fit rubric, guardrails, credit discipline). Create a task
 
 ## 4. Find people (no email reveal yet)
 For each approved company:
+- People search returns surnames masked (e.g. "Le***t") until enrichment. That's expected.
 - First run `apollo_contacts_search` (James's own Apollo CRM) to find people already saved there. Reuse them and don't pay twice.
 - Then run `apollo_mixed_people_api_search` with `q_organization_domains_list` set to the company domain, `person_seniorities` set to `c_suite, vp, head, director`, and titles in two passes:
   - **Marketing:** `CMO`, `Chief Marketing Officer`, `VP Marketing`, `Head of Marketing`, `Marketing Director`, `Field Marketing`, `Event Marketing`, `Brand`, `Partnerships`
@@ -55,12 +58,15 @@ For each approved company:
 ⛔ **Gate 2: contacts to enrich.** Show the contacts per company (name, title, function, location, LinkedIn, and whether they're already in Apollo CRM with an email). Give the **credit estimate** (see step 5: about 1 per person on a standard match, variable with waterfall; no phones). Ask James to approve all of them or a subset.
 
 ## 5. Enrich approved contacts only
-- Once per conversation, call `apollo_users_api_profile` with `include_waterfall_capability=true` (and `include_credit_usage=true`).
-  - **Waterfall email enabled:** that's the default path. Credits are **variable** per person, so say that, not a fixed number.
+- Once per conversation, call `apollo_users_api_profile` with `include_waterfall_capability=true` and `include_credit_usage=true`. **Note the balance before you spend.**
+  - **Waterfall email enabled** (it is for James's team): credits are **variable** per person. In the first test it was 36 credits for 10 people.
   - **Not enabled:** a standard match, about 1 credit per person matched.
-- ≤10 people: `apollo_people_bulk_match` with the Apollo person `id`s, `reveal_personal_emails: false`, and no phone reveal. If waterfall is on, set `run_waterfall_email: true` and poll `apollo_webhook_result_show` with the `request_id`.
-- >10 people: one `apollo_agent_bulk_enrich` call for the whole approved list (it quotes the total; confirm once). Emails only.
-- Report credits used and the balance (from `mcp_credits`, or `apollo_usage_stats_credit_usage_stats`).
+- **Use `apollo_people_bulk_match` in batches of ≤10**, with the Apollo person `id`s, `reveal_personal_emails: false`, no phone reveal, and `run_waterfall_email: true` when waterfall is on.
+  - Waterfall is **async**. The response carries a `request_id` and no emails. Poll `apollo_webhook_result_show` with it until `status: success`, and read `credits_consumed`.
+  - **Don't use `apollo_agent_bulk_enrich`.** Apollo suggests it for more than 10 people, but it **saves everyone as Apollo contacts**, and that's a write James must approve separately.
+  - Waterfall can return **personal emails** (gmail etc., `email_source_cd: rampedup`). Use only the work-domain email.
+  - Run batches **one at a time**, not in parallel, so an interruption leaves a clean state. If a batch is interrupted, compare the balance before and after; it may have run without returning results.
+- Report credits used per batch, and the balance after.
 - Record the email and email status. If an email is missing, leave it blank. Never guess an email pattern.
 
 ## 6. Build the lead sheet

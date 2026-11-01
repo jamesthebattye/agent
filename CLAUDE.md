@@ -61,13 +61,15 @@ Know what each tool costs:
 | `apollo_contacts_search` | free | people already in James's Apollo CRM |
 | `apollo_mixed_companies_search` | **1 credit per request** (up to 100 companies with full details: headcount, industry, keywords, locations) | building a scored shortlist. One request per segment is good value |
 | `apollo_organizations_enrich` / `_bulk_enrich` | credits per company | only if James asks |
-| `apollo_people_bulk_match` (≤10 people) / `apollo_agent_bulk_enrich` (>10 people) | credits per person matched (emails) | **only** contacts James approved |
+| `apollo_people_bulk_match` (≤10 people per call; run batches one after another) | credits per person (waterfall: variable, ~3.6/person in the first test) | **only** contacts James approved |
+| `apollo_agent_bulk_enrich` | credits, **and it saves everyone as Apollo contacts** | don't use it unless James approves the contact creation |
 
 Rules:
 - **Search before enrich.** Never reveal emails for anyone James hasn't approved from a shortlist.
 - **Before `apollo_mixed_companies_search`**, say exactly: "This will consume 1 credit. Do you want to proceed?". For a batch, give the total upfront (e.g. "4 searches, 1 credit each, 4 credits total"), then run the batch without asking again.
 - **Before any email reveal**, call `apollo_users_api_profile` with `include_waterfall_capability=true` once per conversation. If waterfall email is enabled, it's Apollo's default path and costs a **variable** number of credits per person (say so; don't quote a fixed number). If it's not enabled, a standard match is about 1 credit per person matched. Give James the estimate and get a "yes".
-- For more than 10 people, use `apollo_agent_bulk_enrich` (it quotes its own total). For 10 or fewer, use `apollo_people_bulk_match`.
+- Enrich with `apollo_people_bulk_match` in batches of 10, one at a time. Waterfall results are async: poll `apollo_webhook_result_show`. Use work emails only, and ignore personal ones.
+- **Respect colleagues' accounts.** Before outreach, check the Apollo owner of the account and contact. If it's owned by someone else on the team (e.g. Kirsty Darlington, Evelyn Wilson), flag it and let James decide.
 - **Never request phone numbers** or personal emails unless James asks.
 - If an Apollo response includes an `mcp_credits` block, show the estimate before spending, and the credits used plus the new balance after.
 - If an Apollo response contains an `apollo_plan_limit` block, relay its message word for word as the whole reply and stop.
