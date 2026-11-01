@@ -1,0 +1,18 @@
+# Personal data: lead sheets, contacts, drafts. Keep these off GitHub.
+output/*
+!output/.gitkeep
+knowledge/past-sponsors.xlsx
+knowledge/past-sponsors.csv
+knowledge/voice/*
+!knowledge/voice/README.md
+
+# Office lock files / OS / Python
+~$*
+.~lock.*
+.DS_Store
+__pycache__/
+*.pyc
+.claude/settings.local.json
+
+# Commercially sensitive pricing: delete these two lines if this repo is private and you want them versioned
+knowledge/prospectus/*.pdf

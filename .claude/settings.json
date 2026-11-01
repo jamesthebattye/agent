@@ -1,0 +1,50 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 scripts/xlsx_tools.py:*)",
+      "Bash(python3 scripts/md_to_docx.py:*)",
+      "Bash(python3 scripts/check_email.py:*)",
+      "Bash(python3 scripts/build_templates.py)",
+      "Bash(mkdir -p output/:*)",
+      "Bash(pdftotext:*)",
+      "WebSearch",
+      "WebFetch",
+      "mcp__apollo__apollo_mixed_companies_search",
+      "mcp__apollo__apollo_mixed_people_api_search",
+      "mcp__apollo__apollo_organizations_lookup",
+      "mcp__apollo__apollo_organizations_job_postings",
+      "mcp__apollo__apollo_contacts_search",
+      "mcp__apollo__apollo_accounts_search",
+      "mcp__apollo__apollo_deals_search",
+      "mcp__apollo__apollo_emailer_campaigns_search",
+      "mcp__apollo__apollo_email_accounts_index",
+      "mcp__apollo__apollo_usage_stats_credit_usage_stats",
+      "mcp__apollo__apollo_users_api_profile"
+    ],
+    "ask": [
+      "mcp__apollo__apollo_people_match",
+      "mcp__apollo__apollo_people_bulk_match",
+      "mcp__apollo__apollo_organizations_enrich",
+      "mcp__apollo__apollo_organizations_bulk_enrich",
+      "mcp__apollo__apollo_agent_bulk_enrich",
+      "mcp__apollo__apollo_contacts_create",
+      "mcp__apollo__apollo_contacts_bulk_create",
+      "mcp__apollo__apollo_contacts_update",
+      "mcp__apollo__apollo_accounts_create",
+      "mcp__apollo__apollo_accounts_bulk_create",
+      "mcp__apollo__apollo_accounts_update",
+      "mcp__apollo__apollo_deals_create",
+      "mcp__apollo__apollo_sequences_create",
+      "mcp__apollo__apollo_sequences_update",
+      "mcp__apollo__apollo_emailer_campaigns_add_contact_ids",
+      "mcp__apollo__apollo_emailer_campaigns_approve",
+      "mcp__apollo__apollo_emailer_campaigns_update_step_content",
+      "mcp__apollo__apollo_emailer_messages_create",
+      "mcp__apollo__apollo_emailer_messages_send_now",
+      "mcp__apollo__apollo_tasks_create",
+      "mcp__apollo__apollo_tasks_bulk_create",
+      "mcp__apollo__apollo_labels_create",
+      "mcp__apollo__apollo_labels_add_entity_ids_to_label_names"
+    ]
+  }
+}
