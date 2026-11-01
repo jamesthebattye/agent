@@ -21,6 +21,7 @@ For each company (in parallel where possible):
   - Found with a current title at the company → `Yes`.
   - Found at another company, or not found at this domain → `Left`. If they moved to another ICP company, note "now at X". That's a warm lead too, and goes in the notes.
   - Can't tell → `Unknown`.
+- **Owner:** record the Apollo owner of the account and of each contact. If it's a colleague, include it with a flag (`⚑ Owner: <name>`, `apollo_owner` column). Don't drop it.
 - **Current contacts:** pull 1–3 **BD** and 1–3 **Marketing** people (the same title lists as `find-leads`). Prefer the regions of the events they sponsored before or will most likely sponsor.
 
 ## 3. Match a 2027 event per company

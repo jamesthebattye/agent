@@ -13,6 +13,7 @@ Arguments: `$ARGUMENTS` = a contact (name plus company, an email, or a row in th
 - **Research:** use today's `output/YYYY-MM-DD/research-<company>.md` if it exists. Otherwise run the `research-account` steps first (via `lead-researcher`).
 - **Event facts:** from `knowledge/events-2027.md`. **Proof points:** only from `knowledge/proof-points.md`. **History:** from `knowledge/past-sponsors` (re-engagement).
 - **Voice:** the files in `knowledge/voice/`. If there are none, note "not voice-matched".
+- **Owner flag:** if the contact or account is owned by a colleague in Apollo, add `owner_flag: ⚑ Owner: <name>` to the draft front matter and mention it when showing the draft.
 - Fill in `templates/email-brief.md` and save it as `output/YYYY-MM-DD/outbox/briefs/<contact-slug>.md`.
 
 ## 2. Draft (subagent `email-drafter`)

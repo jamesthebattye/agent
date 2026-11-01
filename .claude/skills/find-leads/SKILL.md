@@ -32,7 +32,7 @@ Follow CLAUDE.md (ICP, fit rubric, guardrails, credit discipline). Create a task
     - A&D: `workplace design`, `interior architecture`, `fit-out`
     - CRE advisory: `commercial real estate advisory`, `occupier services`, `workplace strategy`
     - FM: `integrated facilities management`, `facility services`, `workplace services`
-- **Expect saved accounts to dominate.** In the first test run, all 100 results were James's team's existing Apollo `accounts`, and there were 0 net-new `organizations`. For each one, report the **owner** (map `owner_id` with `apollo_users_search`), the **sequence history** (`contact_campaign_status_tally`) and the **lists** (`label_ids` → `apollo_labels_index`). By default, leave out accounts owned by an active colleague, accounts with live sequence activity (`not_sent`/`paused`/activity in the last 30 days), and accounts on another event's sponsor-prospect list (e.g. "SPEX"). List them separately so James can add them back.
+- **Expect saved accounts to dominate.** In the first test run, all 100 results were James's team's existing Apollo `accounts`, and there were 0 net-new `organizations`. For each one, report the **owner** (map `owner_id` with `apollo_users_search`), the **sequence history** (`contact_campaign_status_tally`) and the **lists** (`label_ids` → `apollo_labels_index`). **Include accounts owned by colleagues (e.g. Kirsty Darlington, Evelyn Wilson) with a flag.** Mark them `⚑ Owner: <name>` in the shortlist table and fill `apollo_owner` in the lead sheet. They aren't excluded. By default, leave out accounts with live sequence activity (`not_sent`/`paused`/activity in the last 30 days) and accounts on another event's sponsor-prospect list (e.g. "SPEX"), and list them separately so James can add them back.
 - Apollo responses are big (60–500k characters) and get saved to a file. Parse them with `python3`; never read them raw.
 - Results come in two buckets. For `organizations`, `id` is the org ID. For `accounts` (already saved by James's team), use `organization_id`, and note "already in Apollo accounts".
 - Pull about 2× the requested count, dedupe by domain, and remove the exclusion list.
@@ -53,6 +53,7 @@ For each approved company:
   - **Marketing:** `CMO`, `Chief Marketing Officer`, `VP Marketing`, `Head of Marketing`, `Marketing Director`, `Field Marketing`, `Event Marketing`, `Brand`, `Partnerships`
   - **BD/Sales:** `CRO`, `Chief Revenue Officer`, `VP Sales`, `Head of Sales`, `Head of Business Development`, `Strategic Partnerships`, `Sales Director`
   - Prefer people located in the event region, and regional titles ("North America", "Americas", "East", "UK&I", "DACH", "APAC").
+- Note each person's Apollo contact owner if they're already a saved contact. If it's a colleague, flag it (`⚑ Owner: <name>`) even when the account itself is unowned.
 - Keep **1–3 BD and 1–3 Marketing** per company. Every company must have at least one of each, or be flagged as "no BD found" / "no marketing found".
 
 ⛔ **Gate 2: contacts to enrich.** Show the contacts per company (name, title, function, location, LinkedIn, and whether they're already in Apollo CRM with an email). Give the **credit estimate** (see step 5: about 1 per person on a standard match, variable with waterfall; no phones). Ask James to approve all of them or a subset.

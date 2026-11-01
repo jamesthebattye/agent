@@ -24,7 +24,7 @@ Launch **one `email-critic` per draft in parallel**. Apply each critic's edits (
 
 ## 4. Outbox
 - `python3 scripts/xlsx_tools.py outbox --dir output/YYYY-MM-DD/outbox`
-- ⛔ **Gate: drafts.** Show a review table: contact, company, function, subject, critic score, open flags/placeholders, file. Ask James to mark each one approve / edit / drop. Apply those edits. Set `status: approved` in the front matter of approved drafts and rebuild `outbox.xlsx`.
+- ⛔ **Gate: drafts.** Show a review table: contact, company, function, **owner flag (⚑ colleague-owned)**, subject, critic score, open flags/placeholders, file. Before approving a ⚑ draft, remind James to check with that colleague. Ask James to mark each one approve / edit / drop. Apply those edits. Set `status: approved` in the front matter of approved drafts and rebuild `outbox.xlsx`.
 
 ## 5. Optional: push approved drafts to Apollo (writes, so ask)
 Offer this only when James has approved drafts. **Nothing gets written to Apollo without an explicit "yes" for this exact batch.**

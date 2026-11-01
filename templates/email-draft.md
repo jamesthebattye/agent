@@ -7,6 +7,7 @@ email: {{email or blank}}
 linkedin: {{url}}
 event: WORKTECH {{City}} 2027
 angle: {{one line}}
+owner_flag: {{blank, or ⚑ Owner: <colleague> (check before sending)}}
 status: draft
 critic_score: {{n/10}}
 sources: {{url1}} | {{url2}}
