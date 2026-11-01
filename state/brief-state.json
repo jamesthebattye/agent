@@ -1,0 +1,6 @@
+{
+  "rotation": ["London", "New York", "Frankfurt", "San Francisco", "Amsterdam", "Toronto", "Berlin", "Seattle", "Stockholm", "Singapore", "Madrid", "Sydney"],
+  "next_index": 0,
+  "last_run": null,
+  "brief_artifact_url": null
+}

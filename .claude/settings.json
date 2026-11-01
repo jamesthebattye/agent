@@ -19,7 +19,11 @@
       "mcp__apollo__apollo_email_accounts_index",
       "mcp__apollo__apollo_usage_stats_credit_usage_stats",
       "mcp__apollo__apollo_users_api_profile",
-      "mcp__apollo__apollo_webhook_result_show"
+      "mcp__apollo__apollo_webhook_result_show",
+      "mcp__apollo__apollo_users_search",
+      "mcp__apollo__apollo_labels_index",
+      "Bash(git add state/:*)",
+      "Bash(git commit -m morning-brief:*)"
     ],
     "ask": [
       "mcp__apollo__apollo_mixed_companies_search",
