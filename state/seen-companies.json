@@ -226,5 +226,107 @@
   "first_seen": "2026-11-01",
   "source": "find-leads New York 2027",
   "status": "reviewed, not shortlisted (already an Apollo account)"
+ },
+ "nowystyl.com": {
+  "company": "Nowy Styl (incl. Kusch+Co)",
+  "first_seen": "2026-11-01",
+  "source": "morning-brief London",
+  "status": "briefed"
+ },
+ "rapinteriors.co.uk": {
+  "company": "Rap Interiors",
+  "first_seen": "2026-11-01",
+  "source": "morning-brief London",
+  "status": "briefed"
+ },
+ "atlasfm.com": {
+  "company": "Atlas FM",
+  "first_seen": "2026-11-01",
+  "source": "morning-brief London",
+  "status": "briefed"
+ },
+ "avispl.co.uk": {
+  "company": "AVI-SPL UK & Ireland",
+  "first_seen": "2026-11-01",
+  "source": "morning-brief London",
+  "status": "briefed"
+ },
+ "whitecroftlighting.com": {
+  "company": "Whitecroft Lighting",
+  "first_seen": "2026-11-01",
+  "source": "morning-brief London",
+  "status": "briefed"
+ },
+ "swg.com": {
+  "company": "Service Works Global (SWG)",
+  "first_seen": "2026-11-01",
+  "source": "morning-brief London",
+  "status": "briefed"
+ },
+ "dams.com": {
+  "company": "Dams Furniture",
+  "first_seen": "2026-11-01",
+  "source": "morning-brief London",
+  "status": "briefed"
+ },
+ "willmottdixoninteriors.co.uk": {
+  "company": "Willmott Dixon Interiors",
+  "first_seen": "2026-11-01",
+  "source": "morning-brief London",
+  "status": "briefed"
+ },
+ "corgan.com": {
+  "company": "Corgan",
+  "first_seen": "2026-11-01",
+  "source": "morning-brief London",
+  "status": "briefed"
+ },
+ "sharp.eu": {
+  "company": "Sharp Europe",
+  "first_seen": "2026-11-01",
+  "source": "morning-brief London",
+  "status": "briefed"
+ },
+ "narbutas.com": {
+  "company": "Narbutas",
+  "first_seen": "2026-11-01",
+  "source": "morning-brief London",
+  "status": "already being worked (Evelyn)"
+ },
+ "cbre.com": {
+  "company": "CBRE",
+  "first_seen": "2026-11-01",
+  "source": "morning-brief London",
+  "status": "already being worked (live sequence)"
+ },
+ "hok.com": {
+  "company": "HOK",
+  "first_seen": "2026-11-01",
+  "source": "morning-brief London",
+  "status": "already being worked"
+ },
+ "savills.com": {
+  "company": "Savills",
+  "first_seen": "2026-11-01",
+  "source": "morning-brief London",
+  "status": "already being worked (Kirsty)"
+ },
+ "mitie.com": {
+  "company": "Mitie",
+  "first_seen": "2026-11-01",
+  "source": "morning-brief London",
+  "status": "already being worked (Kirsty)"
+ },
+ "redpincompany.com": {
+  "company": "Redpin (Currencies Direct)",
+  "first_seen": "2026-11-01",
+  "source": "morning-brief London",
+  "status": "not ICP"
+ },
+ "kusch.com": {
+  "company": "Kusch+Co",
+  "first_seen": "2026-11-01",
+  "source": "morning-brief London",
+  "status": "briefed with Nowy Styl"
  }
 }

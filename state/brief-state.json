@@ -1,6 +1,19 @@
 {
-  "rotation": ["London", "New York", "Frankfurt", "San Francisco", "Amsterdam", "Toronto", "Berlin", "Seattle", "Stockholm", "Singapore", "Madrid", "Sydney"],
-  "next_index": 0,
-  "last_run": null,
+  "rotation": [
+    "London",
+    "New York",
+    "Frankfurt",
+    "San Francisco",
+    "Amsterdam",
+    "Toronto",
+    "Berlin",
+    "Seattle",
+    "Stockholm",
+    "Singapore",
+    "Madrid",
+    "Sydney"
+  ],
+  "next_index": 1,
+  "last_run": "2026-11-01",
   "brief_artifact_url": null
 }

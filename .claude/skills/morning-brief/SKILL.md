@@ -46,9 +46,9 @@ For each kept company:
 - Cap the score at 5.
 
 **Priority** comes from company fit × contact score:
-- **A = 16 or more:** work today.
-- **B = 9–15:** this week.
-- **C = 8 or less:** keep warm.
+- **A = 20 or more:** work today. Expect 3–5 a day.
+- **B = 12–19:** this week.
+- **C = 11 or less:** keep warm.
 
 ## 5. Outreach strategy (no emails sent, no Apollo writes)
 For each **A** (and the best B if there are fewer than 3 A's), write a short play:
