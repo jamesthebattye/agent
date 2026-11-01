@@ -66,6 +66,7 @@ For each approved company:
   - Waterfall is **async**. The response carries a `request_id` and no emails. Poll `apollo_webhook_result_show` with it until `status: success`, and read `credits_consumed`.
   - **Don't use `apollo_agent_bulk_enrich`.** Apollo suggests it for more than 10 people, but it **saves everyone as Apollo contacts**, and that's a write James must approve separately.
   - Waterfall can return **personal emails** (gmail etc., `email_source_cd: rampedup`). Use only the work-domain email.
+  - An email can show `email_status_cd: Verified` while ZeroBounce in `vendor_validation_statuses` says `invalid`. Treat that as **no valid email**, and don't put it on the sheet.
   - Run batches **one at a time**, not in parallel, so an interruption leaves a clean state. If a batch is interrupted, compare the balance before and after; it may have run without returning results.
 - Report credits used per batch, and the balance after.
 - Record the email and email status. If an email is missing, leave it blank. Never guess an email pattern.
